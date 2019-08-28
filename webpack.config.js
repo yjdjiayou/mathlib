@@ -19,12 +19,14 @@ module.exports = {
         // var (默认)/commonjs/commonjs2/this/window/global/umd
         // 配置要导出的模块中哪些子模块需要被导出
         // 它只有在 output.libraryTarget 被设置成 commonjs 或者 commonjs2 时使用才有意义
-        libraryExport:'default'//导出哪个属性git 
+        libraryExport:'default'//导出哪个属性git
     },
     optimization:{
         minimize:true,
         minimizer:[
             new TerserPlugin({
+                // webpack 会产出一个个 chunk
+                // 压缩阶段：这里的 include ，我推测是只作用于 entry
                 include:/\.min\.js$/, //mathtest.min.js
                 // 也可以这样
                 // chunkFilter: (chunk) => {
